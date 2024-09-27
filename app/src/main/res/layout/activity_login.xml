@@ -14,13 +14,13 @@
         android:layout_height="60dp"
         android:layout_gravity="center"
         android:src="@drawable/carrot_logo"
-        android:layout_marginBottom="20dp" />
+    android:layout_marginBottom="20dp" />
 
-    <!-- Bold "Sign Up" title -->
+    <!-- Bold "Login" title -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:text="Login"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginBottom="5dp"/>
@@ -29,28 +29,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create your account"
+        android:text="Enter your email and password"
         android:textSize="16sp"
         android:layout_marginBottom="20dp"/>
-
-    <!-- Username label (bold) -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:layout_marginBottom="5dp"/>
-
-    <!-- Username input field -->
-    <EditText
-        android:id="@+id/editTextUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter your username"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        android:layout_marginBottom="10dp"/>
 
     <!-- Email label (bold) -->
     <TextView
@@ -68,8 +49,7 @@
         android:layout_height="wrap_content"
         android:hint="Enter your email"
         android:inputType="textEmailAddress"
-        android:padding="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:padding="10dp"/>
 
     <!-- Password label (bold) -->
     <TextView
@@ -78,6 +58,7 @@
         android:text="Password"
         android:textStyle="bold"
         android:textSize="16sp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"/>
 
     <!-- Password input field -->
@@ -87,42 +68,44 @@
         android:layout_height="wrap_content"
         android:hint="Enter your password"
         android:inputType="textPassword"
-        android:padding="10dp"
-        android:layout_marginBottom="20dp"/>
+        android:padding="10dp"/>
 
+    <!-- Forgot password link -->
     <TextView
-        android:id="@+id/textTermsPrivacy"
+        android:id="@+id/textForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        android:layout_marginTop="20dp"
-        android:autoLink="none"
-        android:text="By continuing you agree to our Terms of Service and Privacy Policy" />
-
-
-    <!-- Sign up button -->
-    <Button
-        android:id="@+id/buttonSignUp"
-        android:layout_width="364dp"
-        android:layout_height="67dp"
-        android:text="Sign Up"
-        android:textColor="@android:color/white"
-        android:background="@drawable/button_background"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
-
-    <!-- Already have an account text link -->
-    <TextView
-        android:id="@+id/textAlreadyHaveAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Already have an account? Log in"
+        android:text="Forgot password?"
         android:textColor="@color/black"
         android:textStyle="bold"
+    android:layout_marginTop="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_gravity="end" />
+
+    <!-- Login button -->
+
+    <!-- Sign up text link -->
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="364dp"
+        android:layout_height="67dp"
+        android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:layout_gravity="center" />
+        android:backgroundTint="@color/green"
+        android:text="Login"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/textSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't have an accout? Sign up"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+    android:layout_marginTop="20dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_gravity="center" />
 
 </LinearLayout>
