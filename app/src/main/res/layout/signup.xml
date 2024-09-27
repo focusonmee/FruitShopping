@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="start"
+    android:padding="16dp">
+
+    <!-- Carrot logo centered at the top -->
+    <ImageView
+        android:id="@+id/carrotLogo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:src="@drawable/carrot_logo"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Bold "Sign Up" title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- Instruction text -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create your account"
+        android:textSize="16sp"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Username label (bold) -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- Username input field -->
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your username"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <!-- Email label (bold) -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- Email input field -->
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <!-- Password label (bold) -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- Password input field -->
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/textTermsPrivacy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:layout_marginTop="20dp"
+        android:autoLink="none"
+        android:text="By continuing you agree to our Terms of Service and Privacy Policy" />
+
+
+    <!-- Sign up button -->
+    <Button
+        android:id="@+id/buttonSignUp"
+        android:layout_width="364dp"
+        android:layout_height="67dp"
+        android:text="Sign Up"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_background"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Already have an account text link -->
+    <TextView
+        android:id="@+id/textAlreadyHaveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have an account? Log in"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_gravity="center" />
+
+</LinearLayout>
