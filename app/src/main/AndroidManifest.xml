@@ -13,6 +13,16 @@
         android:theme="@style/Theme.FruitShopping"
         tools:targetApi="31">
         <activity
+            android:name=".Home"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".FruitList"
+            android:exported="false" />
+        <activity
+            android:name=".VegetableList"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
