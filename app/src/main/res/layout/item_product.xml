@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_product"
+    android:layout_width="140dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:elevation="2dp"
+    android:layout_margin="8dp">
+
+    <!-- Image of the fruit -->
+    <ImageView
+        android:id="@+id/fruitImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:scaleType="centerInside"/>
+
+    <!-- Fruit Name -->
+    <TextView
+        android:id="@+id/fruitName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Organic Bananas"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:fontFamily="sans-serif-medium" />
+
+    <!-- Fruit Description -->
+    <TextView
+        android:id="@+id/fruitDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="7pcs, Price: $4.99"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray" />
+
+    <!-- Price and Add to Cart Button Layout -->
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- Price Text -->
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="$4.99"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:fontFamily="sans-serif-medium" />
+
+        <!-- Add to Cart Button -->
+        <ImageButton
+            android:id="@+id/addToCartButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_background"
+            android:src="@drawable/ic_add"
+            android:contentDescription="Add to Cart" />
+    </LinearLayout>
+</LinearLayout>
