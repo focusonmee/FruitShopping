@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class VegetableDBHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "Vegetable.db";
+    private static final String DATABASE_NAME = "Vegetable";
     private static final int DATABASE_VERSION = 1;
 
     // Table and column names
@@ -18,6 +18,7 @@ public class VegetableDBHelper extends SQLiteOpenHelper {
     private static final String COLUMN_CATEGORY_ID = "category_id";
     private static final String COLUMN_PRICE = "price";
     private static final String COLUMN_SALE = "sale";
+    private static final String COLUMN_QUANTITY = "quantity";
     private static final String COLUMN_BANNER = "banner";
     private static final String COLUMN_IMAGE = "image";
     private static final String COLUMN_FEATURED = "featured";
@@ -29,6 +30,7 @@ public class VegetableDBHelper extends SQLiteOpenHelper {
             COLUMN_DESCRIPTION + " TEXT, " +
             COLUMN_CATEGORY_ID + " INTEGER, " +
             COLUMN_PRICE + " REAL, " +
+            COLUMN_QUANTITY + " INTEGER, " +
             COLUMN_SALE + " INTEGER, " +
             COLUMN_BANNER + " TEXT, " +
             COLUMN_IMAGE + " TEXT, " +
@@ -49,14 +51,22 @@ public class VegetableDBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public void clearDatabase() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+        db.close();
+    }
+
     // Insert a new product
-    public boolean addProduct(String name, String description, int categoryId, double price, int sale, String banner, String image, boolean featured) {
+    public boolean addProduct(String name, String description, int categoryId, double price, int quantity, int sale, String banner, String image, boolean featured) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, name);
         values.put(COLUMN_DESCRIPTION, description);
         values.put(COLUMN_CATEGORY_ID, categoryId);
         values.put(COLUMN_PRICE, price);
+        values.put(COLUMN_QUANTITY, quantity);
         values.put(COLUMN_SALE, sale);
         values.put(COLUMN_BANNER, banner);
         values.put(COLUMN_IMAGE, image);
@@ -78,14 +88,21 @@ public class VegetableDBHelper extends SQLiteOpenHelper {
         return db.query(TABLE_NAME, null, COLUMN_CATEGORY_ID + " = ?", new String[]{String.valueOf(categoryId)}, null, null, null);
     }
 
+    // Get product best deal
+    public Cursor getBestDealProduct() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.query(TABLE_NAME, null, COLUMN_FEATURED + " = ?", new String[]{String.valueOf("1")}, null, null, null);
+    }
+
     // Update a product
-    public boolean updateProduct(int id, String name, String description, int categoryId, double price, int sale, String banner, String image, boolean featured) {
+    public boolean updateProduct(int id, String name, String description, int categoryId, double price, int quantity, int sale, String banner, String image, boolean featured) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, name);
         values.put(COLUMN_DESCRIPTION, description);
         values.put(COLUMN_CATEGORY_ID, categoryId);
         values.put(COLUMN_PRICE, price);
+        values.put(COLUMN_QUANTITY, quantity);
         values.put(COLUMN_SALE, sale);
         values.put(COLUMN_BANNER, banner);
         values.put(COLUMN_IMAGE, image);
