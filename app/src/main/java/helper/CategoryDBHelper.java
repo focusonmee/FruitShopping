@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class CategoryDBHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "Vegetable.db";
+    private static final String DATABASE_NAME = "Vegetable";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "Category";
     private static final String COLUMN_ID = "id";

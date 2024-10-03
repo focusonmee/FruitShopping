@@ -14,33 +14,33 @@ import com.example.fruitshopping.R;
 
 import java.util.List;
 
-import model.Vegetable;
+import model.Fruit;
 
-public class VegetableAdapter extends RecyclerView.Adapter<VegetableAdapter.VegetableViewHolder> {
+public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.FruitViewHolder> {
 
     private Context context;
-    private List<Vegetable> vegetableList;
+    private List<Fruit> fruitList;
 
-    public VegetableAdapter(Context context, List<Vegetable> vegetableList) {
+    public FruitAdapter(Context context, List<Fruit> fruitList) {
         this.context = context;
-        this.vegetableList = vegetableList;
+        this.fruitList = fruitList;
     }
 
     @Override
-    public VegetableViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FruitViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false);
-        return new VegetableViewHolder(view);
+        return new FruitViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(VegetableViewHolder holder, int position) {
-        Vegetable vegetable = vegetableList.get(position);
-        holder.vegeName.setText(vegetable.getName());
-        holder.vegeVolume.setText("1Kg");
-        holder.oldPrice.setText(String.format("$%.2f", vegetable.getPrice()));
+    public void onBindViewHolder(FruitViewHolder holder, int position) {
+        Fruit fruit = fruitList.get(position);
+        holder.fruitName.setText(fruit.getName());
+        holder.fruitVolume.setText("1Kg");
+        holder.oldPrice.setText(String.format("$%.2f", fruit.getPrice()));
 
-        if (vegetable.getSale() > 0) {
-            double discountedPrice = vegetable.getDiscountedPrice();
+        if (fruit.getSale() > 0) {
+            double discountedPrice = fruit.getDiscountedPrice();
             holder.newPrice.setText(String.format("$%.2f", discountedPrice));
             holder.oldPrice.setPaintFlags(holder.oldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             holder.oldPrice.setTextColor(context.getResources().getColor(R.color.darker_gray));
@@ -52,9 +52,9 @@ public class VegetableAdapter extends RecyclerView.Adapter<VegetableAdapter.Vege
 
         // Load image using Glide
         Glide.with(context)
-                .load(vegetable.getImage())
+                .load(fruit.getImage())
                 .centerInside()
-                .into(holder.vegeImage);
+                .into(holder.fruitImage);
 
         holder.addToCartButton.setOnClickListener(v -> {
             // Handle add to cart click
@@ -63,21 +63,21 @@ public class VegetableAdapter extends RecyclerView.Adapter<VegetableAdapter.Vege
 
     @Override
     public int getItemCount() {
-        return vegetableList.size();
+        return fruitList.size();
     }
 
-    public static class VegetableViewHolder extends RecyclerView.ViewHolder {
-        TextView vegeName, vegeVolume, oldPrice, newPrice;
-        ImageView vegeImage;
+    public static class FruitViewHolder extends RecyclerView.ViewHolder {
+        TextView fruitName, fruitVolume, oldPrice, newPrice;
+        ImageView fruitImage;
         ImageButton addToCartButton;
 
-        public VegetableViewHolder(View itemView) {
+        public FruitViewHolder(View itemView) {
             super(itemView);
-            vegeName = itemView.findViewById(R.id.name);
-            vegeVolume = itemView.findViewById(R.id.volume);
+            fruitName = itemView.findViewById(R.id.name);
+            fruitVolume = itemView.findViewById(R.id.volume);
             oldPrice = itemView.findViewById(R.id.oldPrice);
             newPrice = itemView.findViewById(R.id.newPrice);
-            vegeImage = itemView.findViewById(R.id.image);
+            fruitImage = itemView.findViewById(R.id.image);
             addToCartButton = itemView.findViewById(R.id.addToCartButton);
         }
     }
