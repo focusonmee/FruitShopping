@@ -18,32 +18,28 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="8dp">
 
-                <EditText
-                    android:id="@+id/search_bar"
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchHomeView"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:background="@color/gray"
-                    android:backgroundTint="@color/transparent"
-                    android:drawableStart="@drawable/search_icon"
-                    android:drawablePadding="8dp"
-                    android:hint="Search"
-                    android:inputType="text"
-                    android:padding="8dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_height="wrap_content"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Search..."
                     app:layout_constraintEnd_toStartOf="@+id/bell"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_margin="16dp" />
+                    android:layout_marginEnd="8dp" />
 
                 <ImageView
                     android:id="@+id/bell"
-                    android:layout_width="35dp"
-                    android:layout_height="34dp"
-                    app:srcCompat="@drawable/bell"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_margin="16dp" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:srcCompat="@drawable/bell" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -107,14 +103,14 @@
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/catView"
+                android:id="@+id/cateList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
                 android:layout_marginBottom="24dp"
-                tools:listitem="@layout/item_category"/>
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -132,23 +128,16 @@
                     android:text="Best Deal"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:text="See all" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/bestProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:layout_marginBottom="24dp"
-                tools:listitem="@layout/item_product"/>
+                android:layout_marginBottom="24dp"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
