@@ -14,13 +14,13 @@ import java.util.List;
 
 import adapter.FruitAdapter;
 import helper.VegetableDBHelper;
-import model.Fruit;
+import model.Product;
 
 public class FruitList extends AppCompatActivity {
     private RecyclerView recyclerView;
     private FruitAdapter fruitAdapter;
     private VegetableDBHelper dbHelper;
-    private List<Fruit> fruitList;
+    private List<Product> productList;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -36,20 +36,20 @@ public class FruitList extends AppCompatActivity {
         Intent intent = getIntent();
         int categoryId = intent.getIntExtra("categoryId", -1);
 
-        fruitList = new ArrayList<>();
-        insertSampleData();
+        productList = new ArrayList<>();
         if (categoryId != -1) {
             loadProductsByCategory(categoryId);
         } else {
             loadDataFromDatabase();
         }
 
-        fruitAdapter = new FruitAdapter(this, fruitList);
+        fruitAdapter = new FruitAdapter(this, productList);
         recyclerView.setAdapter(fruitAdapter);
     }
 
     private void loadDataFromDatabase() {
         Cursor cursor = dbHelper.getAllProduct();
+        productList.clear();
 
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
@@ -59,7 +59,7 @@ public class FruitList extends AppCompatActivity {
                 int sale = cursor.getInt(cursor.getColumnIndexOrThrow("sale"));
                 String image = cursor.getString(cursor.getColumnIndexOrThrow("image"));
 
-                fruitList.add(new Fruit(id, name, price, sale, image));
+                productList.add(new Product(id, name, price, sale, image));
             }
             cursor.close();
         } else {
@@ -69,6 +69,7 @@ public class FruitList extends AppCompatActivity {
 
     private void loadProductsByCategory(int categoryId) {
         Cursor cursor = dbHelper.getProductByCategory(categoryId);
+        productList.clear();
 
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
@@ -78,18 +79,11 @@ public class FruitList extends AppCompatActivity {
                 int sale = cursor.getInt(cursor.getColumnIndexOrThrow("sale"));
                 String image = cursor.getString(cursor.getColumnIndexOrThrow("image"));
 
-                fruitList.add(new Fruit(id, name, price, sale, image));
+                productList.add(new Product(id, name, price, sale, image));
             }
             cursor.close();
         } else {
             Toast.makeText(this, "No products found for this category", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void insertSampleData() {
-        dbHelper.addProduct("Penpaya", "7pcs, Price: $4.99", 1, 10, 1, 50,
-                "https://images.wallpaperscraft.com/image/single/banana_fruit_vitamin_169308_1200x800.jpg",
-                "https://images.wallpaperscraft.com/image/single/banana_fruit_vitamin_169308_320x240.jpg",
-                true);
     }
 }

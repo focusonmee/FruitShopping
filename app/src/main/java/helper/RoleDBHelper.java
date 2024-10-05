@@ -2,7 +2,6 @@ package helper;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -12,7 +11,6 @@ public class RoleDBHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "Role";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_NAME = "name";
-
 
     private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -33,7 +31,6 @@ public class RoleDBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // Insert a new role
     public boolean addRole(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -43,9 +40,7 @@ public class RoleDBHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-
-    // Update a role
-    public boolean updateROle(int id, String name) {
+    public boolean updateRole(int id, String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, name);
@@ -54,8 +49,7 @@ public class RoleDBHelper extends SQLiteOpenHelper {
         return result > 0;
     }
 
-    // Delete a role
-    public void deleteCustomer(int id) {
+    public void deleteRole(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
         db.close();

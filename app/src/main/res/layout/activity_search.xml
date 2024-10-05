@@ -5,10 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
+    tools:context=".SearchActivity"
     android:id="@+id/main">
 
-    <!-- Toolbar for title and menu -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -19,7 +18,7 @@
         android:title="Vegetables"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <!-- SearchView for searching items -->
+
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
@@ -28,9 +27,9 @@
         android:queryHint="Search..."
         android:layout_margin="8dp"/>
 
-    <!-- GridView for displaying items -->
-    <GridView
-        android:id="@+id/gridView"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listSearch"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="2"

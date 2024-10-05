@@ -36,8 +36,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Vegeta
     public void onBindViewHolder(VegetableViewHolder holder, int position) {
         Category category = categoryList.get(position);
         holder.cateName.setText(category.getName());
-
-
         holder.cateImage.setOnClickListener(v -> {
             Intent intent;
             if (category.getId() == 1) {

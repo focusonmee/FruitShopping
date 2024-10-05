@@ -1,7 +1,9 @@
 package com.example.fruitshopping;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import androidx.appcompat.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -15,26 +17,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import adapter.BestDealAdapter;
 import adapter.CategoryAdapter;
 import adapter.VegetableAdapter;
 import helper.CategoryDBHelper;
 import helper.VegetableDBHelper;
 import model.Category;
-import model.Vegetable;
+import model.Product;
 
 public class Home extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView recyclerViewBestProduct;
 
     private CategoryAdapter categorAdapter;
-    private VegetableAdapter vegetableAdapter ;
+    private BestDealAdapter bestDealAdapter ;
 
     private CategoryDBHelper dbHelper;
     private VegetableDBHelper dbVegetableHelper;
 
     private List<Category> categoryList;
-    private List<Vegetable> vegetableList;
+    private List<Product> productList;
 
+    private SearchView searchHomeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,49 +54,56 @@ public class Home extends AppCompatActivity {
         dbVegetableHelper = new VegetableDBHelper(this);
         dbHelper = new CategoryDBHelper(this);
 
-        //insertSampleData();
-
         categoryList = new ArrayList<>();
-        vegetableList  = new ArrayList<>();
+        productList  = new ArrayList<>();
+
+        searchHomeView = findViewById(R.id.searchHomeView);
+        searchHomeView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Intent intent = new Intent(Home.this, SearchActivity.class);
+                intent.putExtra("query", query);
+                startActivity(intent);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                if (s.isEmpty()) {
+                    Intent intent = new Intent(Home.this, SearchActivity.class);
+                    intent.putExtra("query", "");
+                    startActivity(intent);
+                }
+                return false;
+            }
+        });
 
         loadDataFromDatabase();
         categoryList.add(new Category(1, "Fruit"));
         categoryList.add(new Category(2, "Vegetable"));
         categorAdapter = new CategoryAdapter(this, categoryList);
-        vegetableAdapter = new VegetableAdapter(this,vegetableList);
+        bestDealAdapter = new BestDealAdapter(this, productList);
         recyclerView.setAdapter(categorAdapter);
-        recyclerViewBestProduct.setAdapter(vegetableAdapter);
+        recyclerViewBestProduct.setAdapter(bestDealAdapter);
     }
 
     private void loadDataFromDatabase() {
         Cursor cursor = dbVegetableHelper.getBestDealProduct();
+        productList.clear();
 
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
                 String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-                String description = cursor.getString(cursor.getColumnIndexOrThrow("description"));
                 double price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"));
                 int sale = cursor.getInt(cursor.getColumnIndexOrThrow("sale"));
-                int quantity = cursor.getInt(cursor.getColumnIndexOrThrow("quantity"));
                 String image = cursor.getString(cursor.getColumnIndexOrThrow("image"));
 
-                vegetableList.add(new Vegetable(id, name, quantity, description, price, sale, image));
+                productList.add(new Product(id, name, price, sale, image));
             }
             cursor.close();
         } else {
             Toast.makeText(this, "No data found", Toast.LENGTH_SHORT).show();
         }
     }
-
-//    private void insertSampleData() {
-//        dbVegetableHelper.addProduct("Organic Apples", "7pcs, Price: $4.99", 1, 4.99, 1, 0,
-//                "https://images.wallpaperscraft.com/image/single/banana_fruit_vitamin_169308_1200x800.jpg",
-//                "https://images.wallpaperscraft.com/image/single/banana_fruit_vitamin_169308_320x240.jpg",
-//                true);
-//        dbVegetableHelper.addProduct("Tomato", "5pcs, Price: $2.50", 1, 2.50,199, 0,
-//                "https://images.wallpaperscraft.com/image/single/carrot_root_crops_food_224645_1200x800.jpg",
-//                "https://images.wallpaperscraft.com/image/single/carrot_root_crops_food_224645_320x240.jpg",
-//                true);
-//    }
 }
