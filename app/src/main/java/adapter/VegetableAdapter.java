@@ -14,16 +14,16 @@ import com.example.fruitshopping.R;
 
 import java.util.List;
 
-import model.Vegetable;
+import model.Product;
 
 public class VegetableAdapter extends RecyclerView.Adapter<VegetableAdapter.VegetableViewHolder> {
 
     private Context context;
-    private List<Vegetable> vegetableList;
+    private List<Product> productList;
 
-    public VegetableAdapter(Context context, List<Vegetable> vegetableList) {
+    public VegetableAdapter(Context context, List<Product> vegetableList) {
         this.context = context;
-        this.vegetableList = vegetableList;
+        this.productList = vegetableList;
     }
 
     @Override
@@ -34,13 +34,13 @@ public class VegetableAdapter extends RecyclerView.Adapter<VegetableAdapter.Vege
 
     @Override
     public void onBindViewHolder(VegetableViewHolder holder, int position) {
-        Vegetable vegetable = vegetableList.get(position);
-        holder.vegeName.setText(vegetable.getName());
+        Product product = productList.get(position);
+        holder.vegeName.setText(product.getName());
         holder.vegeVolume.setText("1Kg");
-        holder.oldPrice.setText(String.format("$%.2f", vegetable.getPrice()));
+        holder.oldPrice.setText(String.format("$%.2f", product.getPrice()));
 
-        if (vegetable.getSale() > 0) {
-            double discountedPrice = vegetable.getDiscountedPrice();
+        if (product.getSale() > 0) {
+            double discountedPrice = product.getDiscountedPrice();
             holder.newPrice.setText(String.format("$%.2f", discountedPrice));
             holder.oldPrice.setPaintFlags(holder.oldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             holder.oldPrice.setTextColor(context.getResources().getColor(R.color.darker_gray));
@@ -52,7 +52,7 @@ public class VegetableAdapter extends RecyclerView.Adapter<VegetableAdapter.Vege
 
         // Load image using Glide
         Glide.with(context)
-                .load(vegetable.getImage())
+                .load(product.getImage())
                 .centerInside()
                 .into(holder.vegeImage);
 
@@ -63,7 +63,7 @@ public class VegetableAdapter extends RecyclerView.Adapter<VegetableAdapter.Vege
 
     @Override
     public int getItemCount() {
-        return vegetableList.size();
+        return productList.size();
     }
 
     public static class VegetableViewHolder extends RecyclerView.ViewHolder {

@@ -1,13 +1,13 @@
 package model;
 
-public class Fruit {
+public class Product {
     private int id;
     private String name;
     private double price;
     private int sale;
     private String image;
 
-    public Fruit(int id, String name, double price, int sale, String image) {
+    public Product(int id, String name, double price, int sale, String image) {
         this.id = id;
         this.name = name;
         this.price = price;

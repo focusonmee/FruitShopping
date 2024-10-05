@@ -15,7 +15,7 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COLUMN_CATEGORY_NAME;
+            COLUMN_CATEGORY_NAME + " TEXT)";
 
     public CategoryDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

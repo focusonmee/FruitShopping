@@ -9,8 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class VegetableDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Vegetable";
     private static final int DATABASE_VERSION = 1;
-
-    // Table and column names
     private static final String TABLE_NAME = "Product";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_NAME = "name";
@@ -23,7 +21,6 @@ public class VegetableDBHelper extends SQLiteOpenHelper {
     private static final String COLUMN_IMAGE = "image";
     private static final String COLUMN_FEATURED = "featured";
 
-    // SQL statement to create the Drink table
     private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_NAME + " TEXT, " +
@@ -58,7 +55,6 @@ public class VegetableDBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Insert a new product
     public boolean addProduct(String name, String description, int categoryId, double price, int quantity, int sale, String banner, String image, boolean featured) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -76,25 +72,30 @@ public class VegetableDBHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    // Get all product
     public Cursor getAllProduct() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
     }
 
-    // Get product by category ID
     public Cursor getProductByCategory(int categoryId) {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.query(TABLE_NAME, null, COLUMN_CATEGORY_ID + " = ?", new String[]{String.valueOf(categoryId)}, null, null, null);
     }
 
-    // Get product best deal
     public Cursor getBestDealProduct() {
+//        SQLiteDatabase db = this.getReadableDatabase();
+  //      return db.query(TABLE_NAME, null, COLUMN_FEATURED + " = ?", new String[]{String.valueOf("1")}, null, null, null);
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.query(TABLE_NAME, null, COLUMN_FEATURED + " = ?", new String[]{String.valueOf("1")}, null, null, null);
+        return db.query(TABLE_NAME, null, "sale > ?", new String[]{"0"}, null, null, null);
     }
 
-    // Update a product
+    public Cursor getProductsByName(String name) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return  db.query(TABLE_NAME, null, COLUMN_NAME + " LIKE ?",
+                new String[]{"%" + name + "%"}, null, null, null);
+    }
+
+
     public boolean updateProduct(int id, String name, String description, int categoryId, double price, int quantity, int sale, String banner, String image, boolean featured) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -112,11 +113,9 @@ public class VegetableDBHelper extends SQLiteOpenHelper {
         return result > 0;
     }
 
-    // Delete a product
     public void deleteProduct(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
         db.close();
     }
 }
-

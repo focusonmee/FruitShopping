@@ -16,27 +16,27 @@ import java.util.List;
 
 import model.Product;
 
-public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.FruitViewHolder> {
+public class BestDealAdapter extends RecyclerView.Adapter<BestDealAdapter.VegetableViewHolder> {
 
     private Context context;
     private List<Product> productList;
 
-    public FruitAdapter(Context context, List<Product> productList) {
+    public BestDealAdapter(Context context, List<Product> vegetableList) {
         this.context = context;
-        this.productList = productList;
+        this.productList = vegetableList;
     }
 
     @Override
-    public FruitViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public VegetableViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false);
-        return new FruitViewHolder(view);
+        return new VegetableViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(FruitViewHolder holder, int position) {
+    public void onBindViewHolder(VegetableViewHolder holder, int position) {
         Product product = productList.get(position);
-        holder.fruitName.setText(product.getName());
-        holder.fruitVolume.setText("1Kg");
+        holder.vegeName.setText(product.getName());
+        holder.vegeVolume.setText("1Kg");
         holder.oldPrice.setText(String.format("$%.2f", product.getPrice()));
 
         if (product.getSale() > 0) {
@@ -54,7 +54,7 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.FruitViewHol
         Glide.with(context)
                 .load(product.getImage())
                 .centerInside()
-                .into(holder.fruitImage);
+                .into(holder.vegeImage);
 
         holder.addToCartButton.setOnClickListener(v -> {
             // Handle add to cart click
@@ -66,18 +66,18 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.FruitViewHol
         return productList.size();
     }
 
-    public static class FruitViewHolder extends RecyclerView.ViewHolder {
-        TextView fruitName, fruitVolume, oldPrice, newPrice;
-        ImageView fruitImage;
+    public static class VegetableViewHolder extends RecyclerView.ViewHolder {
+        TextView vegeName, vegeVolume, oldPrice, newPrice;
+        ImageView vegeImage;
         ImageButton addToCartButton;
 
-        public FruitViewHolder(View itemView) {
+        public VegetableViewHolder(View itemView) {
             super(itemView);
-            fruitName = itemView.findViewById(R.id.name);
-            fruitVolume = itemView.findViewById(R.id.volume);
+            vegeName = itemView.findViewById(R.id.name);
+            vegeVolume = itemView.findViewById(R.id.volume);
             oldPrice = itemView.findViewById(R.id.oldPrice);
             newPrice = itemView.findViewById(R.id.newPrice);
-            fruitImage = itemView.findViewById(R.id.image);
+            vegeImage = itemView.findViewById(R.id.image);
             addToCartButton = itemView.findViewById(R.id.addToCartButton);
         }
     }

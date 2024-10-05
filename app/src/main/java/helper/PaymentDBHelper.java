@@ -9,14 +9,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class PaymentDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Vegetable.db";
     private static final int DATABASE_VERSION = 1;
-
-    // Table and column names
     private static final String TABLE_NAME = "Payment";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_DESCRIPTION = "description";
 
-    // SQL statement to create the Payment table
     private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_NAME + " TEXT, " +
@@ -37,7 +34,6 @@ public class PaymentDBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // Insert a new payment method
     public boolean addPayment(String name, String description) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -48,13 +44,11 @@ public class PaymentDBHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    // Get all payment methods
     public Cursor getAllPayments() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
     }
 
-    // Update a payment method
     public boolean updatePayment(int id, String name, String description) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -65,11 +59,9 @@ public class PaymentDBHelper extends SQLiteOpenHelper {
         return result > 0;
     }
 
-    // Delete a payment method
     public void deletePayment(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
         db.close();
     }
 }
-
