@@ -14,7 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FruitShopping"
         tools:targetApi="31">
-
+        <activity
+            android:name=".OrderDetail"
+            android:exported="false" />
+        <activity
+            android:name=".MyOrder"
+            android:exported="false" />
+        <activity
+            android:name=".Fruit_VegetableDetail"
+            android:exported="false" />
+        <activity
+            android:name=".ChangePassword"
+            android:exported="false" />
         <activity
             android:name=".SearchActivity"
             android:exported="false" />
@@ -23,8 +34,7 @@
             android:exported="false" />
         <activity
             android:name=".Home"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".FruitList"
             android:exported="false" />
@@ -36,6 +46,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

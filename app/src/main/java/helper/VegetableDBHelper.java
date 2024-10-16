@@ -77,6 +77,17 @@ public class VegetableDBHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
     }
 
+    public Cursor getProductDetail(int ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.query(TABLE_NAME,
+                null, // Select all columns
+                COLUMN_ID + " = ?", // WHERE clause
+                new String[]{String.valueOf(ID)}, // WHERE arguments
+                null, // GROUP BY
+                null, // HAVING
+                null); // ORDER BY
+    }
+
     public Cursor getProductByCategory(int categoryId) {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.query(TABLE_NAME, null, COLUMN_CATEGORY_ID + " = ?", new String[]{String.valueOf(categoryId)}, null, null, null);
