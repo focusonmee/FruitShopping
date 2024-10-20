@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="26dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Update Product" />
+
+    <EditText
+        android:id="@+id/editUpP_Id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Id"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpP_CId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Category_id"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpP_Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Name"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpP_Description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Description"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpP_Price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Price"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpP_Sale"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Sale"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpP_Quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Quantity"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpP_Featured"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Featured"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpP_Banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Banner"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpP_Image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Image"
+        android:text="" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnConfirmUpProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/green"
+            android:text="Confirm" />
+
+        <Button
+            android:id="@+id/btnCancelUpProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:backgroundTint="@color/red"
+            android:text="Cancel" />
+
+    </LinearLayout>
+
+</LinearLayout>

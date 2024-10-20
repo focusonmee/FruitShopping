@@ -15,6 +15,12 @@
         android:theme="@style/Theme.FruitShopping"
         tools:targetApi="31">
         <activity
+            android:name=".ManagerUser"
+            android:exported="false" />
+        <activity
+            android:name=".ManagerProduct"
+            android:exported="false" />
+        <activity
             android:name=".OrderDetail"
             android:exported="false" />
         <activity

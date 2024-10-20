@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="26dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Update User" />
+
+    <EditText
+        android:id="@+id/editUpId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Id"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpRole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Role_Id"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Name"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Password"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Phone"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Address"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editUpEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:hint="Email"
+        android:text="" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnConfirmUpUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/green"
+            android:text="Confirm" />
+
+        <Button
+            android:id="@+id/btnCancelUpUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:backgroundTint="@color/red"
+            android:text="Cancel" />
+
+    </LinearLayout>
+
+</LinearLayout>
